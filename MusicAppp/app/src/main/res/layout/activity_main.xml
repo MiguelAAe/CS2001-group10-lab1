@@ -1,16 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.michael.musicapp.MainActivity">
 
-    <Button
-        android:id="@+id/sendData"
-        android:layout_width="363dp"
-        android:layout_height="49dp"
-        android:text="Add value to firebase"
-        tools:layout_editor_absoluteX="11dp"
-        tools:layout_editor_absoluteY="2dp" />
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#282828"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="HOME"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/upcomming_heading"
+                    android:text="UPCOMMING EVENTS"
+                    style="@style/MiniHeading"/>
+
+                <include layout="@layout/upcoming_event" />
+
+                <TextView
+                    android:id="@+id/suggestions_heading"
+                    android:text="SUGGESTIONS"
+                    style="@style/MiniHeading"
+                    android:layout_marginBottom="15dp"/>
+
+                <include layout="@layout/mini_event" />
+                <include layout="@layout/mini_event" />
+                <include layout="@layout/mini_event" />
+                <include layout="@layout/mini_event" />
+                <include layout="@layout/mini_event" />
+                <include layout="@layout/mini_event" />
+            </LinearLayout>
+    </ScrollView>
+
+    <include layout="@layout/menu"/>
+
+</RelativeLayout>

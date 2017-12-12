@@ -1,0 +1,85 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        android:layout_margin="15dp"
+        android:elevation="1dp"
+        android:background="@drawable/button_file2"
+        android:clickable="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:orientation="vertical"
+            android:background="@drawable/brunel_university"
+            android:gravity="bottom">
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="end"
+                android:paddingRight="15dp"
+                android:text="19:30"
+                android:textAlignment="textEnd"
+                android:textColor="#ffffff"
+                android:textSize="40sp"
+                android:shadowColor="#555555"
+                android:shadowRadius="2"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="end"
+                android:paddingBottom="10dp"
+                android:paddingRight="15dp"
+                android:text="Tuesday, 16, December 2017"
+                android:textAlignment="textEnd"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:shadowColor="#555555"
+                android:shadowRadius="2"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:paddingLeft="20dp"
+                android:paddingTop="13dp"
+                android:text="Venue:"
+                android:textColor="#000000"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:paddingLeft="20dp"
+                android:paddingTop="5dp"
+                android:text="Kingston Ln Uxbridge, UB5 3TZ"
+                android:textColor="#000000"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</FrameLayout>
