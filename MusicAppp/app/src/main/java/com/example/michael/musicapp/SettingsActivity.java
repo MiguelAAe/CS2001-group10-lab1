@@ -26,7 +26,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class SettingsActivity extends AppCompatActivity {
     private Button btnChangePassword, btnRemoveUser,
-            changePassword, remove, signOut;
+            changePassword, remove, signOut, addevent;
     private TextView email;
 
     private EditText oldEmail, password, newPassword;
@@ -77,6 +77,8 @@ public class SettingsActivity extends AppCompatActivity {
 
         changePassword = (Button) findViewById(R.id.changePass);
 
+        addevent = (Button) findViewById(R.id.add_event_button);
+
         remove = (Button) findViewById(R.id.remove);
         signOut = (Button) findViewById(R.id.sign_out);
 
@@ -112,6 +114,13 @@ public class SettingsActivity extends AppCompatActivity {
                 changePassword.setVisibility(View.VISIBLE);
 
                 remove.setVisibility(View.GONE);
+            }
+        });
+
+        addevent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SettingsActivity.this, AddEventActivity.class));
             }
         });
 

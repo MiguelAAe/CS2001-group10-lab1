@@ -116,6 +116,10 @@
             android:id="@+id/sign_out"
             style="@style/buttonStyle2"
             android:text="@string/btn_sign_out" />
+        <Button
+            android:id="@+id/add_event_button"
+            style="@style/buttonStyle2"
+            android:text="Add Event" />
 
     </LinearLayout>
     </ScrollView>

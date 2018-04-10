@@ -1,8 +1,9 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/mini_event"
         android:elevation="0.5dp"
         android:layout_width="match_parent"
         android:layout_height="100dp"
@@ -26,7 +27,7 @@ android:layout_width="match_parent"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/Event_Time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
@@ -34,13 +35,13 @@ android:layout_width="match_parent"
                     android:textColor="@android:color/background_light"
                     android:textSize="22sp"
                     android:textStyle="bold"
-                    android:text="19:00"
+                    android:text="@string/time"
                     android:fontFamily="sans-serif-condensed"
                     android:textAlignment="center"/>
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/Event_Day"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
@@ -51,8 +52,9 @@ android:layout_width="match_parent"
                 android:textAlignment="center"/>
 
             <TextView
+                android:id="@+id/Event_Date"
                 android:fontFamily="sans-serif-condensed"
-                android:text="16 Jan, 17"
+                android:text="@string/date"
                 android:textAlignment="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -70,9 +72,9 @@ android:layout_width="match_parent"
             android:paddingTop="10dp">
 
             <TextView
-                android:id="@+id/title2"
+                android:id="@+id/Event_Name"
                 android:fontFamily="sans-serif-condensed"
-                android:text="Brunel University"
+                android:text="@string/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
@@ -87,11 +89,11 @@ android:layout_width="match_parent"
                 android:orientation="horizontal"></LinearLayout>
 
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/Event_Address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-condensed"
-                android:text="Kingson Ln Uxbridge, UB5 3TZ"
+                android:text="@string/address"
                 android:orientation="horizontal"
                 android:textSize="12sp"
                 android:paddingTop="6dp"/>
@@ -117,7 +119,7 @@ android:layout_width="match_parent"
                     android:textAlignment="center"></TextView>
 
                 <TextView
-                    android:id="@+id/textView15"
+                    android:id="@+id/Event_Genre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@android:color/darker_gray"
@@ -126,7 +128,7 @@ android:layout_width="match_parent"
                     android:paddingTop="2dp"
                     android:paddingRight="5dp"
                     android:paddingLeft="5dp"
-                    android:text="ROCK"
+                    android:text="@string/genre"
                     android:textSize="10sp"
                     android:textAlignment="center"
                     android:textColor="@android:color/background_light"
@@ -137,4 +139,4 @@ android:layout_width="match_parent"
     </LinearLayout>
 
 
-</FrameLayout>
+</LinearLayout>

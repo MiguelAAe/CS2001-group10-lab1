@@ -35,6 +35,7 @@
         android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/main"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/background"
@@ -52,12 +53,7 @@
                     style="@style/MiniHeading"
                     android:layout_marginBottom="15dp"/>
 
-                <include layout="@layout/mini_event" />
-                <include layout="@layout/mini_event" />
-                <include layout="@layout/mini_event" />
-                <include layout="@layout/mini_event" />
-                <include layout="@layout/mini_event" />
-                <include layout="@layout/mini_event" />
+
             </LinearLayout>
     </ScrollView>
 
