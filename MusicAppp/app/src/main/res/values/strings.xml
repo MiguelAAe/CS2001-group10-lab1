@@ -37,4 +37,16 @@
     <string name="date"></string>
     <string name="address"></string>
     <string name="genre"></string>
+    
+    <array name="genres">
+        <item>Pop</item>
+        <item>Hip-Hop</item>
+        <item>RnB</item>
+        <item>Rock</item>
+        <item>Jazz</item>
+        <item>Classical</item>
+        <item>Reggae</item>
+        <item>Metal</item>
+
+    </array>
 </resources>

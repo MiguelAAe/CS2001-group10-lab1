@@ -41,6 +41,7 @@ public class EventList extends ArrayAdapter<Event> {
         TextView event_genre = (TextView) v.findViewById(R.id.Event_Genre);
         TextView event_date = (TextView) v.findViewById(R.id.Event_Date);
 
+
         Event event = eventlist.get(position);
 
 
