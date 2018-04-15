@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
             LinearLayout f = (LinearLayout) findViewById(R.id.main);
             f.addView(mini_event);
 
-
             //btnMini_Event = (LinearLayout) findViewById(R.id.mini_event_1);
             //TextView rr = (TextView)v.findViewById(R.id.Event_Name);
             //rr.setText("jhdsfgysdfg");
@@ -79,6 +78,14 @@ public class MainActivity extends AppCompatActivity {
             event_name.add((TextView) mini_event.findViewById(R.id.Event_Name));
             event_genre.add((TextView) mini_event.findViewById(R.id.Event_Genre));
             event_date.add((TextView) mini_event.findViewById(R.id.Event_Date));
+
+            LinearLayout eventb = (LinearLayout) mini_event.findViewById(R.id.mini_event);
+            eventb.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(MainActivity.this, EventDetailActivity.class));
+                }
+            });
 
 
         }
