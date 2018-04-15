@@ -89,9 +89,6 @@
                 style="@style/MiniHeading"
                 android:text="DATE AND LOCATION"/>
 
-
-
-
             <EditText
                 android:id="@+id/add_event_time"
                 style="@style/textInputStyle"
@@ -117,6 +114,15 @@
                 android:ems="10"
                 android:hint="Enter event address"
                 android:inputType="textPersonName" />
+
+            <Spinner
+                android:id="@+id/add_event_day"
+                style="@style/textInputStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:entries="@array/days"
+                android:padding="10dp"
+                android:popupBackground="@drawable/button_file3"></Spinner>
 
 
             <Button

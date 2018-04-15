@@ -25,6 +25,7 @@ public class AddEventActivity extends AppCompatActivity{
     EditText add_event_date;
     EditText add_event_about;
     Spinner add_event_genre;
+    Spinner add_event_day;
     Button add_button;
 
     DatabaseReference databaseEvents;
@@ -42,8 +43,8 @@ public class AddEventActivity extends AppCompatActivity{
         add_event_date = (EditText) findViewById(R.id.add_event_date);
         add_event_about = (EditText) findViewById(R.id.add_about_event);
         add_event_genre = (Spinner) findViewById(R.id.add_event_genre);
+        add_event_day = (Spinner) findViewById(R.id.add_event_day);
         add_button = (Button) findViewById(R.id.addevent);
-
 
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,15 +61,16 @@ public class AddEventActivity extends AppCompatActivity{
         String date = add_event_date.getText().toString().trim();
         String about = add_event_about.getText().toString().trim();
         String genre = add_event_genre.getSelectedItem().toString();
+        String day = add_event_day.getSelectedItem().toString();
 
 
-        if (TextUtils.isEmpty(name) || TextUtils.isEmpty(address) || TextUtils.isEmpty(time) || TextUtils.isEmpty(date) || TextUtils.isEmpty(about) || TextUtils.isEmpty(genre)) {
+        if (TextUtils.isEmpty(day) || TextUtils.isEmpty(name) || TextUtils.isEmpty(address) || TextUtils.isEmpty(time) || TextUtils.isEmpty(date) || TextUtils.isEmpty(about) || TextUtils.isEmpty(genre)) {
             Toast.makeText(this, "Make Sure All is filled", Toast.LENGTH_SHORT).show();
 
         }
         else{
             String id = databaseEvents.push().getKey();
-            Event event = new Event(id, name, address, time, date, about, genre);
+            Event event = new Event(id, name, address, time, date, about, genre, day);
 
             databaseEvents.child(id).setValue(event);
 

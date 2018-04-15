@@ -1,6 +1,7 @@
 package com.example.michael.musicapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -40,6 +41,7 @@ public class EventList extends ArrayAdapter<Event> {
         TextView event_name = (TextView) v.findViewById(R.id.Event_Name);
         TextView event_genre = (TextView) v.findViewById(R.id.Event_Genre);
         TextView event_date = (TextView) v.findViewById(R.id.Event_Date);
+        TextView event_day = (TextView) v.findViewById(R.id.Event_Day);
 
 
         Event event = eventlist.get(position);
@@ -50,6 +52,7 @@ public class EventList extends ArrayAdapter<Event> {
         event_genre.setText(event.getEventGenre());
         event_name.setText(event.getEventName());
         event_time.setText(event.getEventTime());
+        event_day.setText(event.getEventDay());
 
         return v;
     }}

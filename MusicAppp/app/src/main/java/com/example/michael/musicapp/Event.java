@@ -13,12 +13,13 @@ public class Event {
     String eventDate;
     String eventAbout;
     String eventTime;
+    String eventDay;
 
     public Event(){
 
     }
 
-    public Event(String eventID, String eventName, String eventAddress, String eventTime, String eventDate, String eventAbout, String eventGenre) {
+    public Event(String eventID, String eventName, String eventAddress, String eventTime, String eventDate, String eventAbout, String eventGenre, String eventDay) {
         this.eventID = eventID;
         this.eventName = eventName;
         this.eventAddress = eventAddress;
@@ -26,6 +27,7 @@ public class Event {
         this.eventDate = eventDate;
         this.eventAbout = eventAbout;
         this.eventTime = eventTime;
+        this.eventDay = eventDay;
     }
 
     public String getEventID() {
@@ -54,5 +56,10 @@ public class Event {
 
     public String getEventAbout() {
         return eventAbout;
+    }
+
+    public String getEventDay()
+    {
+        return eventDay;
     }
 }

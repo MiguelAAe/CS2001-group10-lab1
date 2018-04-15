@@ -1,9 +1,11 @@
 package com.example.michael.musicapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -36,6 +38,8 @@ public class SearchActivity extends AppCompatActivity {
         databaseEvents = FirebaseDatabase.getInstance().getReference("Events");
         v = (ListView) findViewById(R.id.listViewEvents);
         eventList = new ArrayList<>();
+
+
     }
 
     @Override
@@ -54,6 +58,7 @@ public class SearchActivity extends AppCompatActivity {
 
                 EventList adapter = new EventList(SearchActivity.this, eventList);
                 v.setAdapter(adapter);
+
             }
 
             @Override
@@ -62,4 +67,6 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }
