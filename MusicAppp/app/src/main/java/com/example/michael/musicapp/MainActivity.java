@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<TextView> event_time = new ArrayList<TextView>();
     public ArrayList<String> eventkey = new ArrayList<String>();
     private int count = 0;
-    private View v;
+    private View mini_event;
     private View b;
     private int i;
 
@@ -62,31 +62,25 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList <View> event = new ArrayList<View>();
 
-        /*for (i = 0; i < 5; i++) {
+        for (i = 0; i < 10; i++) {
 
 
-            v = getLayoutInflater().inflate(R.layout.mini_event, null);
+            mini_event = getLayoutInflater().inflate(R.layout.mini_event, null);
             LinearLayout f = (LinearLayout) findViewById(R.id.main);
-            f.addView(v);
+            f.addView(mini_event);
 
 
             //btnMini_Event = (LinearLayout) findViewById(R.id.mini_event_1);
             //TextView rr = (TextView)v.findViewById(R.id.Event_Name);
             //rr.setText("jhdsfgysdfg");
 
-            event_address.add((TextView) v.findViewById(R.id.Event_Address));
-            event_time.add((TextView) v.findViewById(R.id.Event_Time));
-            event_name.add((TextView) v.findViewById(R.id.Event_Name));
-            event_genre.add((TextView) v.findViewById(R.id.Event_Genre));
-            event_date.add((TextView) v.findViewById(R.id.Event_Date));
+            event_address.add((TextView) mini_event.findViewById(R.id.Event_Address));
+            event_time.add((TextView) mini_event.findViewById(R.id.Event_Time));
+            event_name.add((TextView) mini_event.findViewById(R.id.Event_Name));
+            event_genre.add((TextView) mini_event.findViewById(R.id.Event_Genre));
+            event_date.add((TextView) mini_event.findViewById(R.id.Event_Date));
 
-            LinearLayout eventb = (LinearLayout) v.findViewById(R.id.mini_event);
-            eventb.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(MainActivity.this, EventDetailActivity.class));
-                }
-            });
+
         }
 
         Firebase finding_events = new Firebase("https://musicapp-f8eb2.firebaseio.com/Events");
@@ -102,38 +96,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        for (int i = 0; i< 2; i++) {
-            String location = "https://musicapp-f8eb2.firebaseio.com/Events/event1";
-            Firebase database = new Firebase(location);
-            database.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
 
-
-
-                        Map<String, String> map = dataSnapshot.getValue(Map.class);
-                        String address = map.get("Address");
-                        String name = map.get("Name");
-                        String date = map.get("Date");
-                        String time = map.get("Time");
-                        String genre = map.get("Music Genre");
-
-                        event_address.get(count).setText(address);
-                        event_date.get(count).setText(date);
-                        event_genre.get(count).setText(genre);
-                        event_name.get(count).setText(name);
-                        event_time.get(count).setText(time);
-
-                        count = count + 1;
-
-                }
-
-                @Override
-                public void onCancelled(FirebaseError firebaseError) {
-
-                }
-            });
-        }*/
 
         btnSettings = (LinearLayout) findViewById(R.id.setting_button);
         //If this button is clicked then it activates the sign up class
