@@ -26,6 +26,8 @@ import java.util.List;
 
 public class SearchActivity extends AppCompatActivity {
 
+    private LinearLayout btnHome, btnSettings, btnChat, btnStar;
+
     DatabaseReference databaseEvents;
 
     ListView v;
@@ -39,6 +41,42 @@ public class SearchActivity extends AppCompatActivity {
         v = (ListView) findViewById(R.id.listViewEvents);
         eventList = new ArrayList<>();
 
+
+        btnSettings = (LinearLayout) findViewById(R.id.setting_button);
+        //If this button is clicked then it activates the sign up class
+        btnSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SearchActivity.this, SettingsActivity.class));
+
+            }
+        });
+        btnStar = (LinearLayout) findViewById(R.id.star_button);
+        //If this button is clicked then it activates the sign up class
+        btnStar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SearchActivity.this, StarredActivity.class));
+
+            }
+        });
+        btnHome = (LinearLayout) findViewById(R.id.home_button);
+        //If this button is clicked then it activates the sign up class
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SearchActivity.this, MainActivity.class));
+
+            }
+        });
+        btnChat= (LinearLayout) findViewById(R.id.chat_button);
+        //If this button is clicked then it activates the sign up class
+        btnChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SearchActivity.this, ChatActivity.class));
+            }
+        });
 
     }
 
@@ -66,6 +104,7 @@ public class SearchActivity extends AppCompatActivity {
 
             }
         });
+
     }
 
 

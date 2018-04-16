@@ -28,8 +28,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    private LinearLayout btnSettings;
-    private LinearLayout btnSearch;
+    private LinearLayout btnSearch, btnChat, btnStar, btnSettings;
 
     private LinearLayout btnMini_Event;
     private ArrayList<TextView> event_address = new ArrayList<TextView>();
@@ -92,15 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        btnSettings = (LinearLayout) findViewById(R.id.setting_button);
-        //If this button is clicked then it activates the sign up class
-        btnSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
 
-            }
-        });
 
         btnSearch = (LinearLayout) findViewById(R.id.search_button);
         //If this button is clicked then it activates the sign up class
@@ -108,6 +99,33 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, SearchActivity.class));
+
+            }
+        });
+        btnChat = (LinearLayout) findViewById(R.id.chat_button);
+        //If this button is clicked then it activates the sign up class
+        btnChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ChatActivity.class));
+
+            }
+        });
+        btnStar = (LinearLayout) findViewById(R.id.star_button);
+        //If this button is clicked then it activates the sign up class
+        btnStar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, StarredActivity.class));
+
+            }
+        });
+        btnSettings = (LinearLayout) findViewById(R.id.setting_button);
+        //If this button is clicked then it activates the sign up class
+        btnSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
 
             }
         });
