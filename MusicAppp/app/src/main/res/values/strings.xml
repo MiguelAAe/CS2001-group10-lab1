@@ -39,6 +39,7 @@
     <string name="genre"></string>
     
     <array name="genres">
+        <item>Select Genre</item>
         <item>Pop</item>
         <item>Hip-Hop</item>
         <item>RnB</item>

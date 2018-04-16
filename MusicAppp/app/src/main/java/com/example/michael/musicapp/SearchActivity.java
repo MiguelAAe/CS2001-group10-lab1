@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -33,7 +34,8 @@ public class SearchActivity extends AppCompatActivity {
     private LinearLayout btnHome, btnSettings, btnChat, btnStar;
     private EditText searchBox;
     private ImageButton searchButton;
-    private String searchString;
+    private Spinner searchGenre;
+    private String searchString, genresearchString;
     DatabaseReference databaseEvents;
 
     ListView v;
@@ -83,7 +85,7 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
-        searchBox = (EditText) findViewById(R.id.search_box);
+
         searchButton = (ImageButton) findViewById(R.id.search_button2);
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +94,7 @@ public class SearchActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         searchBox = (EditText) findViewById(R.id.search_box);
+                        searchGenre = (Spinner) findViewById(R.id.search_by_genre);
                         List<Event> eventList= new ArrayList<>();;
 
 
@@ -99,14 +102,19 @@ public class SearchActivity extends AppCompatActivity {
                             Event event = eventSnapshot.getValue(Event.class);
 
                             String name = eventSnapshot.child("eventName").getValue(String.class);
+                            String genre = eventSnapshot.child("eventGenre").getValue(String.class);
                             searchString = searchBox.getText().toString();
+                            genresearchString = searchGenre.getSelectedItem().toString();
 
-                            if (name.contains(searchString)){
+                            if (name.contains(searchString) && genre.contentEquals(genresearchString)){
                                 eventList.add(event);
-                                System.out.println("hollllllll");
                             }
-                            System.out.println(searchString);
-                            System.out.println(name);
+                            else if (name.contains(searchString) && genresearchString.contentEquals("Select Genre")){
+                                eventList.add(event);
+                            }
+                            else{
+                                Toast.makeText(SearchActivity.this, "No Result Found", Toast.LENGTH_SHORT).show();
+                            }
 
 
 
