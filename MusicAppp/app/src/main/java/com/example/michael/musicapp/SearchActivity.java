@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -31,12 +32,11 @@ public class SearchActivity extends AppCompatActivity {
 
     private LinearLayout btnHome, btnSettings, btnChat, btnStar;
     private EditText searchBox;
-    private Button searchButton;
+    private ImageButton searchButton;
     private String searchString;
     DatabaseReference databaseEvents;
 
     ListView v;
-    List<Event> eventList;
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
@@ -44,7 +44,7 @@ public class SearchActivity extends AppCompatActivity {
 
         databaseEvents = FirebaseDatabase.getInstance().getReference("Events");
         v = (ListView) findViewById(R.id.listViewEvents);
-        eventList = new ArrayList<>();
+
 
 
         btnSettings = (LinearLayout) findViewById(R.id.setting_button);
@@ -84,7 +84,7 @@ public class SearchActivity extends AppCompatActivity {
         });
 
         searchBox = (EditText) findViewById(R.id.search_box);
-        searchButton = (Button) findViewById(R.id.search_button2);
+        searchButton = (ImageButton) findViewById(R.id.search_button2);
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View x) {
@@ -92,6 +92,7 @@ public class SearchActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         searchBox = (EditText) findViewById(R.id.search_box);
+                        List<Event> eventList= new ArrayList<>();;
 
 
                         for(DataSnapshot eventSnapshot: dataSnapshot.getChildren()){
