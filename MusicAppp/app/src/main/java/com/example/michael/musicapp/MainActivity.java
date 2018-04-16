@@ -90,19 +90,6 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        Firebase finding_events = new Firebase("https://musicapp-f8eb2.firebaseio.com/Events");
-        finding_events.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
-
-
 
 
         btnSettings = (LinearLayout) findViewById(R.id.setting_button);
