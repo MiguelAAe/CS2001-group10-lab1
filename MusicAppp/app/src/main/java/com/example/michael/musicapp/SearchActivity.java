@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
@@ -27,6 +29,8 @@ import java.util.List;
 public class SearchActivity extends AppCompatActivity {
 
     private LinearLayout btnHome, btnSettings, btnChat, btnStar;
+    private EditText searchBox;
+    private Button searchButton;
 
     DatabaseReference databaseEvents;
 
@@ -78,32 +82,41 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
+        searchBox = (EditText) findViewById(R.id.search_box);
+
+        searchButton = (Button) findViewById(R.id.search_button2);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View x) {
+                databaseEvents.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for(DataSnapshot eventSnapshot: dataSnapshot.getChildren()){
+                            Event event = eventSnapshot.getValue(Event.class);
+
+                            eventList.add(event);
+
+                        }
+
+                        EventList adapter = new EventList(SearchActivity.this, eventList);
+                        v.setAdapter(adapter);
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        databaseEvents.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot eventSnapshot: dataSnapshot.getChildren()){
-                    Event event = eventSnapshot.getValue(Event.class);
 
-                    eventList.add(event);
-
-                }
-
-                EventList adapter = new EventList(SearchActivity.this, eventList);
-                v.setAdapter(adapter);
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
 
     }
 

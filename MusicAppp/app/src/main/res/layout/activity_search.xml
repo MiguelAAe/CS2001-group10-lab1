@@ -33,6 +33,14 @@
         android:background="@color/background"
         android:orientation="vertical">
 
+        <EditText
+            android:id="@+id/search_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/search_button2"
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
         <ListView
             android:id="@+id/listViewEvents"
             android:layout_width="match_parent"
