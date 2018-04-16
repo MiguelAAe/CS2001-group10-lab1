@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -36,6 +37,7 @@ public class SearchActivity extends AppCompatActivity {
     private ImageButton searchButton;
     private Spinner searchGenre;
     private String searchString, genresearchString;
+    View Heading;
     DatabaseReference databaseEvents;
 
     ListView v;
@@ -95,6 +97,7 @@ public class SearchActivity extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         searchBox = (EditText) findViewById(R.id.search_box);
                         searchGenre = (Spinner) findViewById(R.id.search_by_genre);
+                        TextView results = (TextView) findViewById(R.id.result);
                         List<Event> eventList= new ArrayList<>();;
 
 
@@ -108,15 +111,21 @@ public class SearchActivity extends AppCompatActivity {
 
                             if (name.contains(searchString) && genre.contentEquals(genresearchString)){
                                 eventList.add(event);
+                                results.setText("RESULTS");
+                                results.setVisibility(View.VISIBLE);
+
                             }
                             else if (name.contains(searchString) && genresearchString.contentEquals("Select Genre")){
                                 eventList.add(event);
+                                results.setText("RESULTS");
+                                results.setVisibility(View.VISIBLE);
                             }
-                            else{
+                            else {
                                 Toast.makeText(SearchActivity.this, "No Result Found", Toast.LENGTH_SHORT).show();
+                                results.setVisibility(View.VISIBLE);
+                                results.setText("No Results Found");
+
                             }
-
-
 
                         }
 
