@@ -5,9 +5,13 @@ import android.location.Address;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.michael.musicapp.AccountActivity.LoginActivity;
 import com.example.michael.musicapp.AccountActivity.StartUpActivity;
@@ -20,10 +24,14 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
@@ -42,10 +50,15 @@ public class MainActivity extends AppCompatActivity {
     private View b;
     private int i;
 
+    ListView v;
+    DatabaseReference databaseEvents;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        databaseEvents = FirebaseDatabase.getInstance().getReference("Events");
 
         Firebase.setAndroidContext(this);
 
@@ -61,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList <View> event = new ArrayList<View>();
 
-        for (i = 0; i < 10; i++) {
+        for (i = 0; i < 1; i++) {
 
 
             mini_event = getLayoutInflater().inflate(R.layout.mini_event, null);
@@ -88,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
+
 
 
 
@@ -126,6 +140,42 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+
+            }
+        });
+
+
+
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        databaseEvents.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
+            @Override
+            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
+
+                v = (ListView) findViewById(R.id.recent_event_list);
+
+
+                List<Event> eventList= new ArrayList<>();;
+
+                for(com.google.firebase.database.DataSnapshot eventSnapshot: dataSnapshot.getChildren()){
+                    Event event = eventSnapshot.getValue(Event.class);
+
+                        eventList.add(event);
+
+
+
+                }
+
+                EventList adapter = new EventList(MainActivity.this, eventList);
+                v.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
             }
         });
