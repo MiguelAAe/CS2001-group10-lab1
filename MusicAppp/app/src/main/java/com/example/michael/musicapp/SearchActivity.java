@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,7 +32,7 @@ public class SearchActivity extends AppCompatActivity {
     private LinearLayout btnHome, btnSettings, btnChat, btnStar;
     private EditText searchBox;
     private Button searchButton;
-
+    private String searchString;
     DatabaseReference databaseEvents;
 
     ListView v;
@@ -83,7 +84,6 @@ public class SearchActivity extends AppCompatActivity {
         });
 
         searchBox = (EditText) findViewById(R.id.search_box);
-
         searchButton = (Button) findViewById(R.id.search_button2);
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,10 +91,23 @@ public class SearchActivity extends AppCompatActivity {
                 databaseEvents.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
+                        searchBox = (EditText) findViewById(R.id.search_box);
+
+
                         for(DataSnapshot eventSnapshot: dataSnapshot.getChildren()){
                             Event event = eventSnapshot.getValue(Event.class);
 
-                            eventList.add(event);
+                            String name = eventSnapshot.child("eventName").getValue(String.class);
+                            searchString = searchBox.getText().toString();
+
+                            if (name.contains(searchString)){
+                                eventList.add(event);
+                                System.out.println("hollllllll");
+                            }
+                            System.out.println(searchString);
+                            System.out.println(name);
+
+
 
                         }
 
