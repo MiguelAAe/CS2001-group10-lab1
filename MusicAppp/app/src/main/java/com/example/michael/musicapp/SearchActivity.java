@@ -108,6 +108,8 @@ public class SearchActivity extends AppCompatActivity {
                             String genre = eventSnapshot.child("eventGenre").getValue(String.class);
                             searchString = searchBox.getText().toString();
                             genresearchString = searchGenre.getSelectedItem().toString();
+                            name = name.toLowerCase();
+                            searchString = searchString.toLowerCase();
 
                             if (name.contains(searchString) && genre.contentEquals(genresearchString)){
                                 eventList.add(event);
