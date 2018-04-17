@@ -45,7 +45,9 @@
                     android:text="UPCOMMING EVENTS"
                     style="@style/MiniHeading"/>
 
-                <include layout="@layout/upcoming_event" />
+                <include
+                    android:id="@+id/up_event"
+                    layout="@layout/upcoming_event" />
 
                 <TextView
                     android:id="@+id/suggestions_heading"

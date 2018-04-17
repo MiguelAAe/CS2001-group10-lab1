@@ -99,7 +99,7 @@ public class SearchActivity extends AppCompatActivity {
                         searchBox = (EditText) findViewById(R.id.search_box);
                         searchGenre = (Spinner) findViewById(R.id.search_by_genre);
                         int results_found = 0;
-                        float list_height = 0;
+                        float list_height = 20;
                         TextView results = (TextView) findViewById(R.id.result);
                         List<Event> eventList= new ArrayList<>();;
                         results.setText("No Results Found");
@@ -112,7 +112,6 @@ public class SearchActivity extends AppCompatActivity {
                             String searchString = searchBox.getText().toString();
                             String genresearchString = searchGenre.getSelectedItem().toString();
                             name = name.toLowerCase();
-                            list_height = list_height + TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 14, getResources().getDisplayMetrics());
                             searchString = searchString.toLowerCase();
 
                             if (name.contains(searchString) && genre.contentEquals(genresearchString)){

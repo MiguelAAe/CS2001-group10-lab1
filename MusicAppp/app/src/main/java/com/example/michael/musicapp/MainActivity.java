@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.location.Address;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -74,38 +76,13 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList <View> event = new ArrayList<View>();
 
-        for (i = 0; i < 1; i++) {
-
-
-            mini_event = getLayoutInflater().inflate(R.layout.mini_event, null);
-            LinearLayout f = (LinearLayout) findViewById(R.id.main);
-            f.addView(mini_event);
-
-            //btnMini_Event = (LinearLayout) findViewById(R.id.mini_event_1);
-            //TextView rr = (TextView)v.findViewById(R.id.Event_Name);
-            //rr.setText("jhdsfgysdfg");
-
-            event_address.add((TextView) mini_event.findViewById(R.id.Event_Address));
-            event_time.add((TextView) mini_event.findViewById(R.id.Event_Time));
-            event_name.add((TextView) mini_event.findViewById(R.id.Event_Name));
-            event_genre.add((TextView) mini_event.findViewById(R.id.Event_Genre));
-            event_date.add((TextView) mini_event.findViewById(R.id.Event_Date));
-
-            LinearLayout eventb = (LinearLayout) mini_event.findViewById(R.id.mini_event);
-            eventb.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(MainActivity.this, EventDetailActivity.class));
-                }
-            });
-
-
-        }
-
-
-
-
-
+        RelativeLayout upcoming_event = (RelativeLayout) findViewById(R.id.upcoming_event);
+        upcoming_event.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, EventDetailActivity.class));
+            }
+        });
 
         btnSearch = (LinearLayout) findViewById(R.id.search_button);
         //If this button is clicked then it activates the sign up class
@@ -156,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
 
                 v = (ListView) findViewById(R.id.recent_event_list);
-
+                float list_height = 20;
 
                 List<Event> eventList= new ArrayList<>();;
 
@@ -165,11 +142,14 @@ public class MainActivity extends AppCompatActivity {
 
                         eventList.add(event);
 
+                    list_height = list_height + TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 110, getResources().getDisplayMetrics());
 
 
                 }
 
                 EventList adapter = new EventList(MainActivity.this, eventList);
+                v.getLayoutParams().height = (int)list_height;
+                v.requestLayout();
                 v.setAdapter(adapter);
 
             }
