@@ -113,18 +113,18 @@ public class SearchActivity extends AppCompatActivity {
 
                             if (name.contains(searchString) && genre.contentEquals(genresearchString)){
                                 eventList.add(event);
-                                results_found = 1;
+                                results_found = results_found + 1;
                             }
                             else if (name.contains(searchString) && genresearchString.contentEquals("Select Genre")){
                                 eventList.add(event);
-                                results_found = 1;
+                                results_found = results_found + 1;
                             }
                             else {
                                 Toast.makeText(SearchActivity.this, "No Result Found", Toast.LENGTH_SHORT).show();
 
 
                             }
-                            if (results_found == 1) results.setText("RESULTS");
+                            if (results_found >= 1) results.setText("RESULTS FOUND: " + results_found);
 
                             results.setVisibility(View.VISIBLE);
 
