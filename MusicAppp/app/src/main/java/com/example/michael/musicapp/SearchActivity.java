@@ -1,8 +1,10 @@
 package com.example.michael.musicapp;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -97,6 +99,7 @@ public class SearchActivity extends AppCompatActivity {
                         searchBox = (EditText) findViewById(R.id.search_box);
                         searchGenre = (Spinner) findViewById(R.id.search_by_genre);
                         int results_found = 0;
+                        float list_height = 0;
                         TextView results = (TextView) findViewById(R.id.result);
                         List<Event> eventList= new ArrayList<>();;
                         results.setText("No Results Found");
@@ -109,15 +112,20 @@ public class SearchActivity extends AppCompatActivity {
                             String searchString = searchBox.getText().toString();
                             String genresearchString = searchGenre.getSelectedItem().toString();
                             name = name.toLowerCase();
+                            list_height = list_height + TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 14, getResources().getDisplayMetrics());
                             searchString = searchString.toLowerCase();
 
                             if (name.contains(searchString) && genre.contentEquals(genresearchString)){
                                 eventList.add(event);
                                 results_found = results_found + 1;
+                                list_height = list_height + TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 110, getResources().getDisplayMetrics());
+
                             }
                             else if (name.contains(searchString) && genresearchString.contentEquals("Select Genre")){
                                 eventList.add(event);
                                 results_found = results_found + 1;
+                                list_height = list_height + TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 110, getResources().getDisplayMetrics());
+
                             }
                             else {
                                 Toast.makeText(SearchActivity.this, "No Result Found", Toast.LENGTH_SHORT).show();
@@ -132,7 +140,10 @@ public class SearchActivity extends AppCompatActivity {
                         }
 
                         EventList adapter = new EventList(SearchActivity.this, eventList);
+                        v.getLayoutParams().height = (int)list_height;
+                        v.requestLayout();
                         v.setAdapter(adapter);
+
 
                     }
 
