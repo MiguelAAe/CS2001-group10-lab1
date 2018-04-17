@@ -36,7 +36,6 @@ public class SearchActivity extends AppCompatActivity {
     private EditText searchBox;
     private ImageButton searchButton;
     private Spinner searchGenre;
-    private String searchString, genresearchString;
     View Heading;
     DatabaseReference databaseEvents;
 
@@ -97,37 +96,38 @@ public class SearchActivity extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         searchBox = (EditText) findViewById(R.id.search_box);
                         searchGenre = (Spinner) findViewById(R.id.search_by_genre);
+                        int results_found = 0;
                         TextView results = (TextView) findViewById(R.id.result);
                         List<Event> eventList= new ArrayList<>();;
-
+                        results.setText("No Results Found");
 
                         for(DataSnapshot eventSnapshot: dataSnapshot.getChildren()){
                             Event event = eventSnapshot.getValue(Event.class);
 
                             String name = eventSnapshot.child("eventName").getValue(String.class);
                             String genre = eventSnapshot.child("eventGenre").getValue(String.class);
-                            searchString = searchBox.getText().toString();
-                            genresearchString = searchGenre.getSelectedItem().toString();
+                            String searchString = searchBox.getText().toString();
+                            String genresearchString = searchGenre.getSelectedItem().toString();
                             name = name.toLowerCase();
                             searchString = searchString.toLowerCase();
 
                             if (name.contains(searchString) && genre.contentEquals(genresearchString)){
                                 eventList.add(event);
-                                results.setText("RESULTS");
-                                results.setVisibility(View.VISIBLE);
-
+                                results_found = 1;
                             }
                             else if (name.contains(searchString) && genresearchString.contentEquals("Select Genre")){
                                 eventList.add(event);
-                                results.setText("RESULTS");
-                                results.setVisibility(View.VISIBLE);
+                                results_found = 1;
                             }
                             else {
                                 Toast.makeText(SearchActivity.this, "No Result Found", Toast.LENGTH_SHORT).show();
-                                results.setVisibility(View.VISIBLE);
-                                results.setText("No Results Found");
+
 
                             }
+                            if (results_found == 1) results.setText("RESULTS");
+
+                            results.setVisibility(View.VISIBLE);
+
 
                         }
 
