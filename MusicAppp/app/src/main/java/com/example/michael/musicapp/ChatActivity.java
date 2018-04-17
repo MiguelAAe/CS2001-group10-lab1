@@ -19,13 +19,13 @@ public class ChatActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
+        //navigation buttons links
         btnSearch = (LinearLayout) findViewById(R.id.search_button);
         //If this button is clicked then it activates the sign up class
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ChatActivity.this, SearchActivity.class));
-
             }
         });
         btnStar = (LinearLayout) findViewById(R.id.star_button);
@@ -34,7 +34,6 @@ public class ChatActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ChatActivity.this, StarredActivity.class));
-
             }
         });
         btnHome = (LinearLayout) findViewById(R.id.home_button);
@@ -43,7 +42,6 @@ public class ChatActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ChatActivity.this, MainActivity.class));
-
             }
         });
         btnSettings = (LinearLayout) findViewById(R.id.setting_button);
@@ -52,7 +50,6 @@ public class ChatActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ChatActivity.this, SettingsActivity.class));
-
             }
         });
     }

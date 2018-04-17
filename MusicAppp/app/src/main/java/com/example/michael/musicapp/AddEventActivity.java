@@ -34,7 +34,7 @@ public class AddEventActivity extends AppCompatActivity{
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addevent);
-
+        //connect to firebase database /events
         databaseEvents = FirebaseDatabase.getInstance().getReference("Events");
 
         add_event_name = (EditText) findViewById(R.id.add_event_name);
@@ -46,6 +46,7 @@ public class AddEventActivity extends AppCompatActivity{
         add_event_day = (Spinner) findViewById(R.id.add_event_day);
         add_button = (Button) findViewById(R.id.addevent);
 
+        //when clicked runs addEvent function
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,6 +56,7 @@ public class AddEventActivity extends AppCompatActivity{
     }
 
     private void addEvent(){
+        //converts inputed event data into strings
         String name = add_event_name.getText().toString().trim();
         String address = add_event_address.getText().toString().trim();
         String time = add_event_time.getText().toString().trim();
@@ -63,11 +65,12 @@ public class AddEventActivity extends AppCompatActivity{
         String genre = add_event_genre.getSelectedItem().toString();
         String day = add_event_day.getSelectedItem().toString();
 
-
+        //if just one textboxes isnt filled, then this if statment runs.
         if (TextUtils.isEmpty(day) || TextUtils.isEmpty(name) || TextUtils.isEmpty(address) || TextUtils.isEmpty(time) || TextUtils.isEmpty(date) || TextUtils.isEmpty(about) || TextUtils.isEmpty(genre)) {
             Toast.makeText(this, "Make Sure All is filled", Toast.LENGTH_SHORT).show();
 
         }
+        //else it will add the data to the database, using the event constructor class
         else{
             String id = databaseEvents.push().getKey();
             Event event = new Event(id, name, address, time, date, about, genre, day);

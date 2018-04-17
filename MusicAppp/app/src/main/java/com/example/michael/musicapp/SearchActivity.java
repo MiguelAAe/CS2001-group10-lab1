@@ -46,12 +46,12 @@ public class SearchActivity extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-
+        //link to database /Events
         databaseEvents = FirebaseDatabase.getInstance().getReference("Events");
+        //Results list
         v = (ListView) findViewById(R.id.listViewEvents);
 
-
-
+        //links for navigation buttons
         btnSettings = (LinearLayout) findViewById(R.id.setting_button);
         //If this button is clicked then it activates the sign up class
         btnSettings.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +89,9 @@ public class SearchActivity extends AppCompatActivity {
         });
 
 
+
         searchButton = (ImageButton) findViewById(R.id.search_button2);
+        //when search button is clicked, this code runs
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View x) {
@@ -98,52 +100,47 @@ public class SearchActivity extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         searchBox = (EditText) findViewById(R.id.search_box);
                         searchGenre = (Spinner) findViewById(R.id.search_by_genre);
-                        int results_found = 0;
-                        float list_height = 20;
+                        int results_found = 0; //used to count result found
+                        float list_height = 20;//used to make list bigger as more result found
                         TextView results = (TextView) findViewById(R.id.result);
                         List<Event> eventList= new ArrayList<>();;
+                        //initially result heading set as "no results found"
                         results.setText("No Results Found");
-
+                        //loop to obtian all required data per event
                         for(DataSnapshot eventSnapshot: dataSnapshot.getChildren()){
                             Event event = eventSnapshot.getValue(Event.class);
-
-                            String name = eventSnapshot.child("eventName").getValue(String.class);
-                            String genre = eventSnapshot.child("eventGenre").getValue(String.class);
-                            String searchString = searchBox.getText().toString();
-                            String genresearchString = searchGenre.getSelectedItem().toString();
+                            String name = eventSnapshot.child("eventName").getValue(String.class); //name stores event name from database
+                            String genre = eventSnapshot.child("eventGenre").getValue(String.class);// this store event genre from database
+                            String searchString = searchBox.getText().toString();//this stores a search inputed by the user
+                            String genresearchString = searchGenre.getSelectedItem().toString();// this store the genre the user searched for
+                            //makes both lower case to compare easier
                             name = name.toLowerCase();
                             searchString = searchString.toLowerCase();
-
+                            //if searched by event name and genre, or only by genre
                             if (name.contains(searchString) && genre.contentEquals(genresearchString)){
                                 eventList.add(event);
                                 results_found = results_found + 1;
                                 list_height = list_height + TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 110, getResources().getDisplayMetrics());
-
                             }
+                            //if searched by only event name
                             else if (name.contains(searchString) && genresearchString.contentEquals("Select Genre")){
                                 eventList.add(event);
                                 results_found = results_found + 1;
                                 list_height = list_height + TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 110, getResources().getDisplayMetrics());
-
                             }
-                            else {
-                                Toast.makeText(SearchActivity.this, "No Result Found", Toast.LENGTH_SHORT).show();
 
-
-                            }
+                            //if result found, this displays amount of results found
                             if (results_found >= 1) results.setText("RESULTS FOUND: " + results_found);
 
+                            //makes amount of result found visible
                             results.setVisibility(View.VISIBLE);
-
-
                         }
-
                         EventList adapter = new EventList(SearchActivity.this, eventList);
+                        //sets list height
                         v.getLayoutParams().height = (int)list_height;
                         v.requestLayout();
+                        //inputs events found into the list
                         v.setAdapter(adapter);
-
-
                     }
 
                     @Override
@@ -155,13 +152,6 @@ public class SearchActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-
-
-    }
 
 
 }

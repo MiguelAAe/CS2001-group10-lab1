@@ -40,13 +40,6 @@ public class MainActivity extends AppCompatActivity {
 
     private LinearLayout btnSearch, btnChat, btnStar, btnSettings;
 
-    private LinearLayout btnMini_Event;
-    private ArrayList<TextView> event_address = new ArrayList<TextView>();
-    private ArrayList<TextView> event_name = new ArrayList<TextView>();
-    private ArrayList<TextView> event_genre = new ArrayList<TextView>();
-    private ArrayList<TextView> event_date = new ArrayList<TextView>();
-    private ArrayList<TextView> event_time = new ArrayList<TextView>();
-    public ArrayList<String> eventkey = new ArrayList<String>();
     private int count = 0;
     private View mini_event;
     private View b;
@@ -74,8 +67,7 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
 
-        ArrayList <View> event = new ArrayList<View>();
-
+        //linking upcoming event to the event details
         RelativeLayout upcoming_event = (RelativeLayout) findViewById(R.id.upcoming_event);
         upcoming_event.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,13 +76,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //linking navigation buttons
         btnSearch = (LinearLayout) findViewById(R.id.search_button);
         //If this button is clicked then it activates the sign up class
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, SearchActivity.class));
-
             }
         });
         btnChat = (LinearLayout) findViewById(R.id.chat_button);
@@ -133,23 +125,26 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
 
                 v = (ListView) findViewById(R.id.recent_event_list);
+                //this is used to determine height of list depending of amount of event links displayed on screen
                 float list_height = 20;
 
                 List<Event> eventList= new ArrayList<>();;
-
+                //loops to get all data required from an event
                 for(com.google.firebase.database.DataSnapshot eventSnapshot: dataSnapshot.getChildren()){
                     Event event = eventSnapshot.getValue(Event.class);
+                    //add event data to eventlist
+                    eventList.add(event);
 
-                        eventList.add(event);
-
+                    //make list height bigger by 110dp
                     list_height = list_height + TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 110, getResources().getDisplayMetrics());
-
-
                 }
 
+
                 EventList adapter = new EventList(MainActivity.this, eventList);
+                //sets list height
                 v.getLayoutParams().height = (int)list_height;
                 v.requestLayout();
+                //inputs data into the list
                 v.setAdapter(adapter);
 
             }
