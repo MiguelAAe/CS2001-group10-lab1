@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "131919959717-ru9d4qmv77rncusi2ea4et9a4hc6s43h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.michael.musicapp",
+            "certificate_hash": "449b29e7e0a11a38f3d2459f8fd22cde0701721c"
+          }
+        },
+        {
           "client_id": "131919959717-a49ou3htmr9ptia1pgbvp4fp3n7ektku.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

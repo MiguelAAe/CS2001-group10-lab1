@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.michael.musicapp.MainActivity;
 import com.example.michael.musicapp.R;
+import com.example.michael.musicapp.SettingsActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;

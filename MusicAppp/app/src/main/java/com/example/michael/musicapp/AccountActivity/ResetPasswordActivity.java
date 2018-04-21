@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -18,7 +19,8 @@ import com.google.firebase.auth.FirebaseAuth;
 public class ResetPasswordActivity extends AppCompatActivity {
     //All variables needed
     private EditText inputEmail;
-    private Button btnReset, btnBack;
+    private Button btnReset;
+    private ImageButton btnBack;
     private FirebaseAuth auth;
     private ProgressBar progressBar;
 
@@ -31,7 +33,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
         // widgets cariables set
         inputEmail = (EditText) findViewById(R.id.email);
         btnReset = (Button) findViewById(R.id.btn_reset_password);
-        btnBack = (Button) findViewById(R.id.btn_back);
+        btnBack = (ImageButton) findViewById(R.id.btn_back);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         
         auth = FirebaseAuth.getInstance();

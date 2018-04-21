@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:background="@color/background"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_gravity="center_horizontal"
+                android:contentDescription=""
+                android:src="@drawable/brunel_university"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+            >
+                <TextView
+                    android:id="@+id/event_detail_heading"
+                    android:text="BRUNEL UNIVERSITY"
+                    style=""
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="#111111"
+                    android:textSize="24sp"
+                    android:fontFamily="sans-serif-condensed" />
+
+                <TextView
+                    android:id="@+id/event_detail_time"
+                    android:text="19:00  5th April 2018"
+                    style=""
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="#555555"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textStyle="bold"
+                    android:background="#f1f1f1"/>
+
+                <TextView
+                    android:text="ABOUT EVENT"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="0dp"
+                    style="@style/MiniHeading"
+                    />
+
+                <TextView
+                    android:text="dff ds fsd fer v rfere rfre gerf rrf gr regr frefrf retr vre rrefkdkf ffrhg frfrgrgrff rfrfrfgf rfrgrg rfrferhjt gtvej yyjye tsf ymynnytk k umu n  kiy tn utk l rujru etny nyte"
+                    style="@style/MiniHeading"
+                    android:elevation="0dp"
+                    android:layout_width="match_parent"
+                    android:layout_margin="15dp"
+                    android:textColor="#111111"
+                    android:textStyle="normal"
+                    android:background="#f4f4f4"
+                   />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#111111"
+                    android:orientation="vertical"></LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Music Type:"
+                        android:background="#ffffff"
+                        android:textColor="#111111"
+                        android:textStyle="normal"
+                        style="@style/MiniHeading"
+                        android:padding="5dp"
+                        android:layout_marginTop="0dp"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="POP:"
+                        style="@style/MiniHeading"
+                        android:background="#555555"
+                        android:layout_margin="0dp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#111111"
+                    android:orientation="vertical"></LinearLayout>
+
+                <TextView
+                    android:text="CONTACT DETAILS"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="0dp"
+                    style="@style/MiniHeading"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:orientation="vertical"
+                    android:layout_margin="15dp"
+                    android:background="#f4f4f4"></LinearLayout>
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

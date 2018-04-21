@@ -1,238 +1,164 @@
 package com.example.michael.musicapp;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.support.annotation.NonNull;
+import android.location.Address;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.ButtonBarLayout;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ProgressBar;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.michael.musicapp.AccountActivity.LoginActivity;
+import com.example.michael.musicapp.AccountActivity.StartUpActivity;
+import com.example.michael.musicapp.SettingsActivity;
 import com.example.michael.musicapp.AccountActivity.SignupActivity;
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    private Button btnChangePassword, btnRemoveUser,
-            changePassword, remove, signOut;
-    private TextView email;
 
-    private EditText oldEmail, password, newPassword;
-    private ProgressBar progressBar;
-    private FirebaseAuth auth;
+    private LinearLayout btnSettings;
+    private LinearLayout btnSearch;
 
+    private LinearLayout btnMini_Event;
+    private ArrayList<TextView> event_address = new ArrayList<TextView>();
+    private ArrayList<TextView> event_name = new ArrayList<TextView>();
+    private ArrayList<TextView> event_genre = new ArrayList<TextView>();
+    private ArrayList<TextView> event_date = new ArrayList<TextView>();
+    private ArrayList<TextView> event_time = new ArrayList<TextView>();
+    public ArrayList<String> eventkey = new ArrayList<String>();
+    private int count = 0;
+    private View v;
+    private View b;
+    private int i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//get firebase auth instance
-        auth = FirebaseAuth.getInstance();
-        email = (TextView) findViewById(R.id.useremail);
+
+        Firebase.setAndroidContext(this);
 
         //get current user
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        setDataToView(user);
 
-        authListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user == null) {
-                    // user auth state is changed - user is null
-                    // launch login activity
-                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                    finish();
-                }
-            }
-        };
-
-
-        btnChangePassword = (Button) findViewById(R.id.change_password_button);
-
-        btnRemoveUser = (Button) findViewById(R.id.remove_user_button);
-
-        changePassword = (Button) findViewById(R.id.changePass);
-
-        remove = (Button) findViewById(R.id.remove);
-        signOut = (Button) findViewById(R.id.sign_out);
-
-        oldEmail = (EditText) findViewById(R.id.old_email);
-
-        password = (EditText) findViewById(R.id.password);
-        newPassword = (EditText) findViewById(R.id.newPassword);
-
-        oldEmail.setVisibility(View.GONE);
-
-        password.setVisibility(View.GONE);
-        newPassword.setVisibility(View.GONE);
-
-        changePassword.setVisibility(View.GONE);
-
-        remove.setVisibility(View.GONE);
-
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
-
-        if (progressBar != null) {
-            progressBar.setVisibility(View.GONE);
+        if (user == null) {
+            // user auth state is changed - user is null
+            // launch login activity
+            startActivity(new Intent(MainActivity.this, StartUpActivity.class));
+            finish();
         }
 
+        ArrayList <View> event = new ArrayList<View>();
 
-        btnChangePassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                oldEmail.setVisibility(View.GONE);
+        /*for (i = 0; i < 5; i++) {
 
-                password.setVisibility(View.GONE);
-                newPassword.setVisibility(View.VISIBLE);
 
-                changePassword.setVisibility(View.VISIBLE);
+            v = getLayoutInflater().inflate(R.layout.mini_event, null);
+            LinearLayout f = (LinearLayout) findViewById(R.id.main);
+            f.addView(v);
 
-                remove.setVisibility(View.GONE);
-            }
-        });
 
-        changePassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                progressBar.setVisibility(View.VISIBLE);
-                if (user != null && !newPassword.getText().toString().trim().equals("")) {
-                    if (newPassword.getText().toString().trim().length() < 6) {
-                        newPassword.setError("Password too short, enter minimum 6 characters");
-                        progressBar.setVisibility(View.GONE);
-                    } else {
-                        user.updatePassword(newPassword.getText().toString().trim())
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful()) {
-                                            Toast.makeText(MainActivity.this, "Password is updated, sign in with new password!", Toast.LENGTH_SHORT).show();
-                                            signOut();
-                                            progressBar.setVisibility(View.GONE);
-                                        } else {
-                                            Toast.makeText(MainActivity.this, "Failed to update password!", Toast.LENGTH_SHORT).show();
-                                            progressBar.setVisibility(View.GONE);
-                                        }
-                                    }
-                                });
-                    }
-                } else if (newPassword.getText().toString().trim().equals("")) {
-                    newPassword.setError("Enter password");
-                    progressBar.setVisibility(View.GONE);
+            //btnMini_Event = (LinearLayout) findViewById(R.id.mini_event_1);
+            //TextView rr = (TextView)v.findViewById(R.id.Event_Name);
+            //rr.setText("jhdsfgysdfg");
+
+            event_address.add((TextView) v.findViewById(R.id.Event_Address));
+            event_time.add((TextView) v.findViewById(R.id.Event_Time));
+            event_name.add((TextView) v.findViewById(R.id.Event_Name));
+            event_genre.add((TextView) v.findViewById(R.id.Event_Genre));
+            event_date.add((TextView) v.findViewById(R.id.Event_Date));
+
+            LinearLayout eventb = (LinearLayout) v.findViewById(R.id.mini_event);
+            eventb.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(MainActivity.this, EventDetailActivity.class));
                 }
-            }
-        });
-
-
-        btnRemoveUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                progressBar.setVisibility(View.VISIBLE);
-                if (user != null) {
-                    user.delete()
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        Toast.makeText(MainActivity.this, "Your profile is deleted:( Create a account now!", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(MainActivity.this, SignupActivity.class));
-                                        finish();
-                                        progressBar.setVisibility(View.GONE);
-                                    } else {
-                                        Toast.makeText(MainActivity.this, "Failed to delete your account!", Toast.LENGTH_SHORT).show();
-                                        progressBar.setVisibility(View.GONE);
-                                    }
-                                }
-                            });
-                }
-            }
-        });
-
-        signOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signOut();
-            }
-        });
-
-    }
-
-    @SuppressLint("SetTextI18n")
-    private void setDataToView(FirebaseUser user) {
-
-        email.setText("User Email: " + user.getEmail());
-
-
-    }
-
-    // this listener will be called when there is change in firebase user session
-    FirebaseAuth.AuthStateListener authListener = new FirebaseAuth.AuthStateListener() {
-        @SuppressLint("SetTextI18n")
-        @Override
-        public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-            FirebaseUser user = firebaseAuth.getCurrentUser();
-            if (user == null) {
-                // user auth state is changed - user is null
-                // launch login activity
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                finish();
-            } else {
-                setDataToView(user);
-
-            }
+            });
         }
 
-
-    };
-
-    //sign out method
-    public void signOut() {
-        auth.signOut();
-
-
-// this listener will be called when there is change in firebase user session
-        FirebaseAuth.AuthStateListener authListener = new FirebaseAuth.AuthStateListener() {
+        Firebase finding_events = new Firebase("https://musicapp-f8eb2.firebaseio.com/Events");
+        finding_events.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user == null) {
-                    // user auth state is changed - user is null
-                    // launch login activity
-                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                    finish();
-                }
+            public void onDataChange(DataSnapshot dataSnapshot) {
             }
-        };
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
+
+        for (int i = 0; i< 2; i++) {
+            String location = "https://musicapp-f8eb2.firebaseio.com/Events/event1";
+            Firebase database = new Firebase(location);
+            database.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+
+
+                        Map<String, String> map = dataSnapshot.getValue(Map.class);
+                        String address = map.get("Address");
+                        String name = map.get("Name");
+                        String date = map.get("Date");
+                        String time = map.get("Time");
+                        String genre = map.get("Music Genre");
+
+                        event_address.get(count).setText(address);
+                        event_date.get(count).setText(date);
+                        event_genre.get(count).setText(genre);
+                        event_name.get(count).setText(name);
+                        event_time.get(count).setText(time);
+
+                        count = count + 1;
+
+                }
+
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
+
+                }
+            });
+        }*/
+
+        btnSettings = (LinearLayout) findViewById(R.id.setting_button);
+        //If this button is clicked then it activates the sign up class
+        btnSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+
+            }
+        });
+
+        btnSearch = (LinearLayout) findViewById(R.id.search_button);
+        //If this button is clicked then it activates the sign up class
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, SearchActivity.class));
+
+            }
+        });
+
+
+
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        progressBar.setVisibility(View.GONE);
-    }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        auth.addAuthStateListener(authListener);
-    }
 
-    @Override
-    public void onStop() {
-        super.onStop();
-        if (authListener != null) {
-            auth.removeAuthStateListener(authListener);
-        }
-    }
 }
-

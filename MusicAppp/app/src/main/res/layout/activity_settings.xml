@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context="com.example.michael.musicapp.SettingsActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#282828">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="SETTINGS"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:orientation="vertical"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded_corners2"></LinearLayout>
+
+        <TextView
+            android:id="@+id/useremail"
+            android:hint="@string/email_id"
+            style="@style/MiniHeading"
+            android:layout_marginBottom="40dp"/>
+
+        <Button
+            android:id="@+id/change_password_button"
+            style="@style/buttonStyle2"
+            android:text="@string/change_password" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#121212"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/old_email"
+                style="@style/textInputStyle"
+                android:layout_centerHorizontal="true"
+                android:hint="@string/hint_email"
+                android:inputType="textEmailAddress"
+                android:maxLines="1" />
+
+            <EditText
+                android:id="@+id/password"
+                style="@style/textInputStyle"
+                android:focusableInTouchMode="true"
+                android:hint="@string/prompt_password"
+                android:imeActionId="@+id/login"
+                android:imeOptions="actionUnspecified"
+                android:inputType="textPassword"
+                android:maxLines="1" />
+
+            <EditText
+                android:id="@+id/newPassword"
+                style="@style/textInputStyle"
+                android:focusableInTouchMode="true"
+                android:hint="@string/new_pass"
+                android:imeActionId="@+id/login"
+                android:imeOptions="actionUnspecified"
+                android:inputType="textPassword"
+                android:maxLines="1" />
+
+            <Button
+                android:id="@+id/changePass"
+                style="@style/buttonStyle1"
+                android:layout_marginBottom="20dp"
+                android:text="@string/btn_change" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:visibility="gone"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <Button
+                android:id="@+id/remove"
+                style="@style/buttonStyle1"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="0dp"
+                android:text="@string/btn_remove" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/remove_user_button"
+            style="@style/buttonStyle2"
+            android:text="@string/remove_user" />
+
+        <Button
+            android:id="@+id/sign_out"
+            style="@style/buttonStyle2"
+            android:text="@string/btn_sign_out" />
+        <Button
+            android:id="@+id/add_event_button"
+            style="@style/buttonStyle2"
+            android:text="Add Event" />
+
+    </LinearLayout>
+    </ScrollView>
+
+    <include layout="@layout/menu"/>
+
+</RelativeLayout>
