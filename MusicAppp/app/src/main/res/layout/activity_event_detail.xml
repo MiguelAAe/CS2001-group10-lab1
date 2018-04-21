@@ -35,7 +35,7 @@
                 android:background="@color/white"
                 android:orientation="vertical"
             >
-                <TextView
+                <EditText
                     android:id="@+id/event_detail_heading"
                     android:text="BRUNEL UNIVERSITY"
                     style=""
@@ -49,9 +49,9 @@
                     android:textSize="24sp"
                     android:fontFamily="sans-serif-condensed" />
 
-                <TextView
-                    android:id="@+id/event_detail_time"
-                    android:text="19:00  5th April 2018"
+                <EditText
+                    android:id="@+id/event_detail_date"
+                    android:text="5th April 2018"
                     style=""
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -65,14 +65,31 @@
                     android:textStyle="bold"
                     android:background="#f1f1f1"/>
 
-                <TextView
+                <EditText
+                    android:id="@+id/event_detail_time"
+                    android:text="19:00"
+                    style=""
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="#555555"
+                    android:textSize="20sp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:textStyle="bold"
+                    android:background="#f1f1f1"/>
+
+                <EditText
                     android:text="ABOUT EVENT"
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="0dp"
                     style="@style/MiniHeading"
                     />
 
-                <TextView
+                <EditText
+                    android:id="@+id/description"
                     android:text="dff ds fsd fer v rfere rfre gerf rrf gr regr frefrf retr vre rrefkdkf ffrhg frfrgrgrff rfrfrfgf rfrgrg rfrferhjt gtvej yyjye tsf ymynnytk k umu n  kiy tn utk l rujru etny nyte"
                     style="@style/MiniHeading"
                     android:elevation="0dp"
@@ -110,7 +127,8 @@
                         android:layout_marginTop="0dp"
                         />
 
-                    <TextView
+                    <EditText
+                        android:id="@+id/Genre"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="POP:"

@@ -1,5 +1,6 @@
 package com.example.michael.musicapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -39,6 +40,7 @@ public class AddEventActivity extends AppCompatActivity{
         add_event_date = (EditText) findViewById(R.id.add_event_date);
         add_event_genre = (EditText) findViewById(R.id.add_event_genre);
         add_button = (Button) findViewById(R.id.addevent);
+        Intent intent = new Intent(AddEventActivity.this, EventDetailActivity.class);
 
 
         add_button.setOnClickListener(new View.OnClickListener() {

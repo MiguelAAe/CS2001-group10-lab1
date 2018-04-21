@@ -16,6 +16,9 @@ public class Event {
     public Event(){
 
     }
+    public void init(){
+
+    }
 
     public Event(String eventID, String eventName, String eventAddress, String eventGenre, String eventDate, String eventTime) {
         this.eventID = eventID;
