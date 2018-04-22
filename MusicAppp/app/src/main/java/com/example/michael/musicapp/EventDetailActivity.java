@@ -19,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class EventDetailActivity extends Activity{
     DatabaseReference databaseEvents;
-    EditText add_event_detail_headings;
+    EditText add_event_detail_heading;
     EditText add_event_detail_time;
     EditText add_description;
     EditText add_Genre;
@@ -29,11 +29,16 @@ public class EventDetailActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_detail);
-        add_event_detail_headings = (EditText) findViewById(R.id.event_detail_heading);
+        add_event_detail_heading = (EditText) findViewById(R.id.event_detail_heading);
         add_event_detail_date = (EditText) findViewById(R.id.event_detail_date);
         add_event_detail_time = (EditText) findViewById(R.id.event_detail_time);
         add_description =  (EditText) findViewById(R.id.description);
         add_Genre = (EditText) findViewById(R.id.Genre);
+
+        Intent i = getIntent();
+        String getName = i.getStringExtra("GetName");
+        add_event_detail_heading.setText(getName);
+
         databaseEvents = FirebaseDatabase.getInstance().getReference("Events");
     }
         }

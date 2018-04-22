@@ -1,11 +1,13 @@
 package com.example.michael.musicapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.michael.musicapp.AccountActivity.StartUpActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -55,11 +57,17 @@ public class SearchActivity extends AppCompatActivity {
                 EventList adapter = new EventList(SearchActivity.this, eventList);
                 v.setAdapter(adapter);
             }
+            public void onClick(EventList e){
+                Intent intent = new Intent(SearchActivity.this, EventDetailActivity.class);
+                startActivity(intent);
+                finish();
+            }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
+
         });
     }
 }
