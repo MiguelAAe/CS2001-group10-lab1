@@ -23,6 +23,7 @@ public class AddEventActivity extends AppCompatActivity{
     EditText add_event_time;
     EditText add_event_date;
     EditText add_event_genre;
+    EditText add_description;
     Button add_button;
 
     DatabaseReference databaseEvents;
@@ -39,9 +40,12 @@ public class AddEventActivity extends AppCompatActivity{
         add_event_time = (EditText) findViewById(R.id.add_event_time);
         add_event_date = (EditText) findViewById(R.id.add_event_date);
         add_event_genre = (EditText) findViewById(R.id.add_event_genre);
+        add_description = (EditText) findViewById(R.id.description) ;
         add_button = (Button) findViewById(R.id.addevent);
         Intent intent = new Intent(AddEventActivity.this, EventDetailActivity.class);
-
+        intent.putExtra("GetName", add_event_name.getEditableText().toString());
+        intent.putExtra("GetDate", add_event_date.getEditableText().toString());
+        intent.putExtra("GetTime", add_event_time.getEditableText().toString());
 
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,9 +61,9 @@ public class AddEventActivity extends AppCompatActivity{
         String time = add_event_time.getText().toString().trim();
         String date = add_event_date.getText().toString().trim();
         String genre = add_event_genre.getText().toString().trim();
-
+        String description = add_description.getText().toString().trim();
         String id = databaseEvents.push().getKey();
-        Event event = new Event (id, name, address, time, date, genre);
+        Event event = new Event (id, name, address, time, date, genre, description);
 
         databaseEvents.child(id).setValue(event);
 
