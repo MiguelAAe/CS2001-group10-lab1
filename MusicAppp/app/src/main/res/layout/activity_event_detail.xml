@@ -32,10 +32,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="#252525"
                 android:orientation="vertical"
             >
-                <EditText
+                <TextView
                     android:id="@+id/event_detail_heading"
                     android:text="BRUNEL UNIVERSITY"
                     style=""
@@ -45,119 +45,101 @@
                     android:layout_marginBottom="20dp"
                     android:layout_gravity="center"
                     android:textAlignment="center"
-                    android:textColor="#111111"
-                    android:textSize="24sp"
+                    android:textColor="#f5f5f5"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
                     android:fontFamily="sans-serif-condensed" />
 
-                <EditText
-                    android:id="@+id/event_detail_date"
-                    android:text="5th April 2018"
-                    style=""
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:layout_gravity="center"
-                    android:textAlignment="center"
-                    android:textColor="#555555"
-                    android:textSize="20sp"
-                    android:fontFamily="sans-serif-condensed"
-                    android:textStyle="bold"
-                    android:background="#f1f1f1"/>
+                    android:layout_height="1dp"
+                    android:background="#999999"></LinearLayout>
+                <TextView
+                    android:text="DATE AND TIME"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="0dp"
+                    style="@style/MiniHeading"
+                    />
 
-                <EditText
-                    android:id="@+id/event_detail_time"
-                    android:text="19:00"
-                    style=""
+                <TextView
+                    android:text="19:00     5TH APRIL 2018"
+                    style="@style/MiniHeading"
+                    android:elevation="0dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:layout_gravity="center"
-                    android:textAlignment="center"
-                    android:textColor="#555555"
-                    android:textSize="20sp"
-                    android:fontFamily="sans-serif-condensed"
-                    android:textStyle="bold"
-                    android:background="#f1f1f1"/>
+                    android:layout_margin="15dp"
+                    android:textColor="#999"
+                    android:textStyle="normal"
+                    android:background="#333"
+                    />
 
-                <EditText
+                <TextView
                     android:text="ABOUT EVENT"
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="0dp"
                     style="@style/MiniHeading"
                     />
 
-                <EditText
-                    android:id="@+id/description"
+                <TextView
                     android:text="dff ds fsd fer v rfere rfre gerf rrf gr regr frefrf retr vre rrefkdkf ffrhg frfrgrgrff rfrfrfgf rfrgrg rfrferhjt gtvej yyjye tsf ymynnytk k umu n  kiy tn utk l rujru etny nyte"
                     style="@style/MiniHeading"
                     android:elevation="0dp"
                     android:layout_width="match_parent"
                     android:layout_margin="15dp"
-                    android:textColor="#111111"
+                    android:textColor="#999"
                     android:textStyle="normal"
-                    android:background="#f4f4f4"
+                    android:background="#333"
                    />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="5dp"
-                    android:background="#111111"
-                    android:orientation="vertical"></LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
-                    android:layout_marginTop="5dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="Music Type:"
-                        android:background="#ffffff"
-                        android:textColor="#111111"
-                        android:textStyle="normal"
-                        style="@style/MiniHeading"
-                        android:padding="5dp"
-                        android:layout_marginTop="0dp"
-                        />
-
-                    <EditText
-                        android:id="@+id/Genre"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="POP:"
-                        style="@style/MiniHeading"
-                        android:background="#555555"
-                        android:layout_margin="0dp"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="5dp"
-                    android:background="#111111"
-                    android:orientation="vertical"></LinearLayout>
-
                 <TextView
-                    android:text="CONTACT DETAILS"
-                    android:layout_marginTop="30dp"
+                    android:text="GENRE"
                     android:layout_marginBottom="0dp"
                     style="@style/MiniHeading"
                     />
 
-                <LinearLayout
+                <TextView
+                    android:text="POP"
+                    style="@style/MiniHeading"
+                    android:elevation="0dp"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:orientation="vertical"
                     android:layout_margin="15dp"
-                    android:background="#f4f4f4"></LinearLayout>
+                    android:textColor="#999"
+                    android:textStyle="normal"
+                    android:background="#333"
+                    />
+
+                <TextView
+                    android:text="CONTACT DETAILS"
+                    android:layout_marginBottom="0dp"
+                    style="@style/MiniHeading"
+                    />
+
+                <TextView
+                    android:text="101 Blah Blah Road, Uxbridge, UB3 2WF"
+                    style="@style/MiniHeading"
+                    android:elevation="0dp"
+                    android:layout_width="match_parent"
+                    android:layout_margin="15dp"
+                    android:textColor="#999"
+                    android:textStyle="normal"
+                    android:background="#333"
+                    />
+                <TextView
+                    android:text="ABOUT ARTIST"
+                    android:layout_marginBottom="0dp"
+                    style="@style/MiniHeading"
+                    />
+
+                <TextView
+                    android:text="Blah blag asfsdfgnn gg regr g reg  re g wres gjyj sberg"
+                    style="@style/MiniHeading"
+                    android:elevation="0dp"
+                    android:layout_width="match_parent"
+                    android:layout_margin="15dp"
+                    android:textColor="#999"
+                    android:textStyle="normal"
+                    android:background="#333"
+                    />
+
 
 
 
