@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MusicAppp.iml" filepath="$PROJECT_DIR$/MusicAppp.iml" />
+      <module fileurl="file://C:\Users\Hanif\Documents\GitHub\CS2001-group10-lab1\MusicAppp\MusicAppp.iml" filepath="C:\Users\Hanif\Documents\GitHub\CS2001-group10-lab1\MusicAppp\MusicAppp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Hanif\Documents\GitHub\CS2001-group10-lab1\MusicAppp\app\app.iml" filepath="C:\Users\Hanif\Documents\GitHub\CS2001-group10-lab1\MusicAppp\app\app.iml" />
     </modules>
   </component>
 </project>
