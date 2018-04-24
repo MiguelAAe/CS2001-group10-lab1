@@ -4,16 +4,10 @@ import android.content.Intent;
 import android.location.Address;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.TypedValue;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.michael.musicapp.AccountActivity.LoginActivity;
 import com.example.michael.musicapp.AccountActivity.StartUpActivity;
@@ -26,34 +20,33 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    private LinearLayout btnSearch, btnChat, btnStar, btnSettings;
+    private LinearLayout btnSettings;
+    private LinearLayout btnSearch;
 
+    private LinearLayout btnMini_Event;
+    private ArrayList<TextView> event_address = new ArrayList<TextView>();
+    private ArrayList<TextView> event_name = new ArrayList<TextView>();
+    private ArrayList<TextView> event_genre = new ArrayList<TextView>();
+    private ArrayList<TextView> event_date = new ArrayList<TextView>();
+    private ArrayList<TextView> event_time = new ArrayList<TextView>();
+    public ArrayList<String> eventkey = new ArrayList<String>();
     private int count = 0;
-    private View mini_event;
+    private View v;
     private View b;
     private int i;
-
-    ListView v;
-    DatabaseReference databaseEvents;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        databaseEvents = FirebaseDatabase.getInstance().getReference("Events");
 
         Firebase.setAndroidContext(this);
 
@@ -67,42 +60,81 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
 
-        //linking upcoming event to the event details
-        RelativeLayout upcoming_event = (RelativeLayout) findViewById(R.id.upcoming_event);
-        upcoming_event.setOnClickListener(new View.OnClickListener() {
+        ArrayList <View> event = new ArrayList<View>();
+
+        /*for (i = 0; i < 5; i++) {
+
+
+            v = getLayoutInflater().inflate(R.layout.mini_event, null);
+            LinearLayout f = (LinearLayout) findViewById(R.id.main);
+            f.addView(v);
+
+
+            //btnMini_Event = (LinearLayout) findViewById(R.id.mini_event_1);
+            //TextView rr = (TextView)v.findViewById(R.id.Event_Name);
+            //rr.setText("jhdsfgysdfg");
+
+            event_address.add((TextView) v.findViewById(R.id.Event_Address));
+            event_time.add((TextView) v.findViewById(R.id.Event_Time));
+            event_name.add((TextView) v.findViewById(R.id.Event_Name));
+            event_genre.add((TextView) v.findViewById(R.id.Event_Genre));
+            event_date.add((TextView) v.findViewById(R.id.Event_Date));
+
+            LinearLayout eventb = (LinearLayout) v.findViewById(R.id.mini_event);
+            eventb.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(MainActivity.this, EventDetailActivity.class));
+                }
+            });
+        }
+
+        Firebase finding_events = new Firebase("https://musicapp-f8eb2.firebaseio.com/Events");
+        finding_events.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, EventDetailActivity.class));
+            public void onDataChange(DataSnapshot dataSnapshot) {
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
             }
         });
 
-        //linking navigation buttons
-        btnSearch = (LinearLayout) findViewById(R.id.search_button);
-        //If this button is clicked then it activates the sign up class
-        btnSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, SearchActivity.class));
-            }
-        });
-        btnChat = (LinearLayout) findViewById(R.id.chat_button);
-        //If this button is clicked then it activates the sign up class
-        btnChat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, ChatActivity.class));
 
-            }
-        });
-        btnStar = (LinearLayout) findViewById(R.id.star_button);
-        //If this button is clicked then it activates the sign up class
-        btnStar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, StarredActivity.class));
+        for (int i = 0; i< 2; i++) {
+            String location = "https://musicapp-f8eb2.firebaseio.com/Events/event1";
+            Firebase database = new Firebase(location);
+            database.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
 
-            }
-        });
+
+
+                        Map<String, String> map = dataSnapshot.getValue(Map.class);
+                        String address = map.get("Address");
+                        String name = map.get("Name");
+                        String date = map.get("Date");
+                        String time = map.get("Time");
+                        String genre = map.get("Music Genre");
+
+                        event_address.get(count).setText(address);
+                        event_date.get(count).setText(date);
+                        event_genre.get(count).setText(genre);
+                        event_name.get(count).setText(name);
+                        event_time.get(count).setText(time);
+
+                        count = count + 1;
+
+                }
+
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
+
+                }
+            });
+        }*/
+
         btnSettings = (LinearLayout) findViewById(R.id.setting_button);
         //If this button is clicked then it activates the sign up class
         btnSettings.setOnClickListener(new View.OnClickListener() {
@@ -113,44 +145,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-    }
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        databaseEvents.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
+        btnSearch = (LinearLayout) findViewById(R.id.search_button);
+        //If this button is clicked then it activates the sign up class
+        btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(com.google.firebase.database.DataSnapshot dataSnapshot) {
-
-                v = (ListView) findViewById(R.id.recent_event_list);
-                //this is used to determine height of list depending of amount of event links displayed on screen
-                float list_height = 20;
-
-                List<Event> eventList= new ArrayList<>();;
-                //loops to get all data required from an event
-                for(com.google.firebase.database.DataSnapshot eventSnapshot: dataSnapshot.getChildren()){
-                    Event event = eventSnapshot.getValue(Event.class);
-                    //add event data to eventlist
-                    eventList.add(event);
-
-                    //make list height bigger by 110dp
-                    list_height = list_height + TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 110, getResources().getDisplayMetrics());
-                }
-
-
-                EventList adapter = new EventList(MainActivity.this, eventList);
-                //sets list height
-                v.getLayoutParams().height = (int)list_height;
-                v.requestLayout();
-                //inputs data into the list
-                v.setAdapter(adapter);
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, SearchActivity.class));
 
             }
         });

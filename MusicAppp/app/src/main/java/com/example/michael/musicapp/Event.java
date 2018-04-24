@@ -11,23 +11,25 @@ public class Event {
     String eventAddress;
     String eventGenre;
     String eventDate;
-    String eventAbout;
     String eventTime;
-    String eventDay;
+    String eventDescription;
 
     public Event(){
 
     }
+    public void init(){
 
-    public Event(String eventID, String eventName, String eventAddress, String eventTime, String eventDate, String eventAbout, String eventGenre, String eventDay) {
+    }
+
+    public Event(String eventID, String eventName, String eventAddress, String eventGenre, String eventDate, String eventTime, String eventDescription) {
         this.eventID = eventID;
         this.eventName = eventName;
         this.eventAddress = eventAddress;
         this.eventGenre = eventGenre;
         this.eventDate = eventDate;
-        this.eventAbout = eventAbout;
         this.eventTime = eventTime;
-        this.eventDay = eventDay;
+        this.eventDescription = eventDescription;
+
     }
 
     public String getEventID() {
@@ -54,12 +56,5 @@ public class Event {
         return eventTime;
     }
 
-    public String getEventAbout() {
-        return eventAbout;
-    }
-
-    public String getEventDay()
-    {
-        return eventDay;
-    }
+    public String getEventDescription(){return eventDescription;}
 }

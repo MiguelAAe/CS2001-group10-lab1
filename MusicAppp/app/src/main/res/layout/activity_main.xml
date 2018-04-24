@@ -45,9 +45,7 @@
                     android:text="UPCOMMING EVENTS"
                     style="@style/MiniHeading"/>
 
-                <include
-                    android:id="@+id/up_event"
-                    layout="@layout/upcoming_event" />
+                <include layout="@layout/upcoming_event" />
 
                 <TextView
                     android:id="@+id/suggestions_heading"
@@ -55,15 +53,8 @@
                     style="@style/MiniHeading"
                     android:layout_marginBottom="15dp"/>
 
-                <ListView
-                    android:id="@+id/recent_event_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="1000dp"
-                    android:scrollbars="none"></ListView>
 
             </LinearLayout>
-
-
     </ScrollView>
 
     <include layout="@layout/menu"/>

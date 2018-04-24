@@ -4,8 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:descendantFocusability="beforeDescendants"
-    android:focusableInTouchMode="true"
     tools:context="com.example.michael.musicapp.MainActivity">
 
     <RelativeLayout
@@ -32,7 +30,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="50dp"
-        android:layout_marginBottom="0dp"
+        android:layout_marginBottom="50dp"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -40,94 +38,61 @@
             android:id="@+id/main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/background"
-            android:padding="16dp"
+            android:background="#ffffff"
             android:orientation="vertical">
 
-            <TextView
-                style="@style/MiniHeading"
-                android:text="ABOUT EVENT"/>
 
             <EditText
                 android:id="@+id/add_event_name"
-                style="@style/textInputStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Enter event name"
-                android:inputType="textPersonName" />
-
-            <EditText
-                android:id="@+id/add_about_event"
-                style="@style/textInputStyle"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:ems="10"
-                android:hint="What is the event about?"
-                android:gravity="top"
-                android:inputType="textMultiLine"
-                android:singleLine="false" />
-
-
-            <Spinner
-                android:id="@+id/add_event_genre"
-                style="@style/textInputStyle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:entries="@array/genres"
-                android:padding="10dp"
-                android:popupBackground="@drawable/button_file3"></Spinner>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="20dp"
-                android:background="#999999"
-                android:orientation="horizontal"></LinearLayout>
-
-            <TextView
-                style="@style/MiniHeading"
-                android:text="DATE AND LOCATION"/>
+                android:inputType="textPersonName"
+                android:text="Name" />
 
             <EditText
                 android:id="@+id/add_event_time"
-                style="@style/textInputStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="time"
-                android:ems="10"
-                android:hint="Enter event time" />
-            <EditText
-                android:id="@+id/add_event_date"
-                style="@style/textInputStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Enter event date"
-                android:inputType="date" />
+                android:inputType="textPersonName"
+                android:text="Address" />
 
             <EditText
                 android:id="@+id/add_event_address"
-                style="@style/textInputStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Enter event address"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:text="Time" />
 
-            <Spinner
-                android:id="@+id/add_event_day"
-                style="@style/textInputStyle"
+            <EditText
+                android:id="@+id/add_event_genre"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:entries="@array/days"
-                android:padding="10dp"
-                android:popupBackground="@drawable/button_file3"></Spinner>
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Date" />
 
+            <EditText
+                android:id="@+id/add_event_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Genre" />
+            <EditText
+                android:id="@+id/add_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Describe your event" />
 
             <Button
                 android:id="@+id/addevent"
-                style="@style/buttonStyle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="Add Event" />
         </LinearLayout>
     </ScrollView>

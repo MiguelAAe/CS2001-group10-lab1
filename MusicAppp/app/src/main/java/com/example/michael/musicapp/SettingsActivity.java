@@ -29,11 +29,10 @@ public class SettingsActivity extends AppCompatActivity {
             changePassword, remove, signOut, addevent;
     private TextView email;
 
-    private LinearLayout btnHome, btnSearch, btnChat, btnStar;
-
     private EditText oldEmail, password, newPassword;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
+    private LinearLayout btnHome, btnSettings;
 
 
     @Override
@@ -63,39 +62,12 @@ public class SettingsActivity extends AppCompatActivity {
 
             }
         };
-        btnSearch = (LinearLayout) findViewById(R.id.search_button);
-        //If this button is clicked then it activates the sign up class
-        btnSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SettingsActivity.this, SearchActivity.class));
-
-            }
-        });
-        btnStar = (LinearLayout) findViewById(R.id.star_button);
-        //If this button is clicked then it activates the sign up class
-        btnStar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SettingsActivity.this, StarredActivity.class));
-
-            }
-        });
         btnHome = (LinearLayout) findViewById(R.id.home_button);
         //If this button is clicked then it activates the sign up class
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SettingsActivity.this, MainActivity.class));
-
-            }
-        });
-        btnChat= (LinearLayout) findViewById(R.id.chat_button);
-        //If this button is clicked then it activates the sign up class
-        btnChat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SettingsActivity.this, ChatActivity.class));
             }
         });
 
