@@ -1,0 +1,71 @@
+{
+  "project_info": {
+    "project_number": "131919959717",
+    "firebase_url": "https://musicapp-f8eb2.firebaseio.com",
+    "project_id": "musicapp-f8eb2",
+    "storage_bucket": "musicapp-f8eb2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:131919959717:android:04a67fea41bda7f0",
+        "android_client_info": {
+          "package_name": "com.example.michael.musicapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "131919959717-ru9d4qmv77rncusi2ea4et9a4hc6s43h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.michael.musicapp",
+            "certificate_hash": "449b29e7e0a11a38f3d2459f8fd22cde0701721c"
+          }
+        },
+        {
+          "client_id": "131919959717-a49ou3htmr9ptia1pgbvp4fp3n7ektku.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.michael.musicapp",
+            "certificate_hash": "8aca3d6dd6a359b8766fddde3f4fd5efec1b248d"
+          }
+        },
+        {
+          "client_id": "131919959717-r4qvdng96o4gg30hgob6q4sdd8icn5lc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.michael.musicapp",
+            "certificate_hash": "33f1fdf27a724942d942edb062821c9ef1158419"
+          }
+        },
+        {
+          "client_id": "131919959717-utpqfkirg3o9bner1bske0elmqibbji9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRClVcsJClbZE2U4AHW0IWDBZqAPq_qRU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "131919959717-utpqfkirg3o9bner1bske0elmqibbji9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
